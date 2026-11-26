@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Goodweb | Shopify and eCommerce website development</title>
+<meta name="description" content="Goodweb builds fast, easy-to-run Shopify and eCommerce websites for growing brands.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#FFF8DC;--sl:transparent;--sd:rgba(31,92,46,.24);--text:#1F5C2E;--muted:#3d6b47;--sage:#4C9A2A;--gold:#F5C518;--deep:#1F5C2E;--pale:#FFF8DC;--btn:#1F5C2E;--on-btn:#FFF8DC;--r:24px;
+--raise:9px 9px 20px var(--sd),-9px -9px 20px var(--sl);--inset:inset 6px 6px 12px var(--sd),inset -6px -6px 12px var(--sl);
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 96px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:"Plus Jakarta Sans",system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.55;font-size:16px}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:30}
+a{color:inherit}
+.wrap{width:90%;max-width:1800px;margin:0 auto;padding:0}
+:focus-visible{outline:3px solid var(--deep);outline-offset:3px;border-radius:12px}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;padding:10px 0}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;background:var(--bg);box-shadow:var(--raise);border-radius:999px;padding:6px 8px 6px 20px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:21px;text-decoration:none;letter-spacing:-.02em}
+.logo i{width:28px;height:28px;border-radius:9px;background:var(--bg);box-shadow:var(--inset);display:grid;place-items:center}
+.logo i::after{content:"";width:12px;height:12px;border-radius:50%;background:var(--sage)}
+.logo img{width:160px;height:auto;display:block}
+@media (max-width:860px){.logo img{width:120px}}
+.links{display:flex;gap:22px;align-items:center;font-weight:600;font-size:15px}
+.links a{text-decoration:none;color:var(--muted)}
+.links a:hover{color:var(--text)}
+.btn{display:inline-block;background:var(--btn);color:var(--on-btn)!important;font:inherit;font-weight:700;padding:11px 22px;border-radius:999px;text-decoration:none;border:0;cursor:pointer;transition:filter .15s}
+.btn:hover{filter:brightness(.92)}
+.btn:active{transform:translateY(1px)}
+.btn.soft{background:transparent;color:var(--text)!important;box-shadow:inset 0 0 0 2px var(--deep)}
+.bento{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
+.tile{background:var(--bg);border-radius:var(--r);box-shadow:var(--raise);padding:24px;position:relative;min-width:0}
+.tile h3{margin:0 0 8px;font-size:20px;line-height:1.25;letter-spacing:-.01em}
+.tile p{margin:0;color:var(--muted);font-size:16px}
+.deep{background:radial-gradient(circle at 12% 0%,rgba(255,248,220,.12),transparent 55%),var(--deep);color:#FFF8DC}.deep p{color:#FFF8DC}
+.gold{background:var(--gold);color:#1F5C2E}.gold p{color:#1F5C2E}
+.s3{grid-column:span 3}.s4{grid-column:span 4}.s5{grid-column:span 5}.s6{grid-column:span 6}.s7{grid-column:span 7}.s12{grid-column:span 12}.r2{grid-row:span 2}
+.ico{width:40px;height:40px;border-radius:12px;background:var(--bg);box-shadow:var(--inset);display:grid;place-items:center;margin-bottom:12px}
+.ico::after{content:"";width:16px;height:16px;border-radius:5px;background:var(--sage)}
+.deep .ico,.gold .ico{background:rgba(0,0,0,.18);box-shadow:inset 3px 3px 8px rgba(0,0,0,.25),inset -2px -2px 6px rgba(255,255,255,.1)}
+.deep .ico::after{background:#F5C518}.gold .ico::after{background:#1F5C2E}
+.hero{padding:16px 0 40px}
+h1{font-size:clamp(30px,3.8vw,48px);line-height:1.08;letter-spacing:-.03em;margin:0 0 14px;font-weight:800}
+.tile .lead{font-size:17px;color:var(--muted);max-width:32em;margin:0 0 20px}
+.cta{display:flex;gap:14px;flex-wrap:wrap}
+.hero .s7{padding:30px}
+.shot{height:210px;border-radius:20px;background:linear-gradient(150deg,#1F5C2E 0%,#4C9A2A 60%,#F5C518 130%);box-shadow:var(--inset);position:relative;overflow:hidden}
+.shot::after{content:"";position:absolute;width:130px;height:130px;border-radius:50%;background:rgba(255,248,220,.3);right:-24px;bottom:-34px}
+.mock h3{margin:18px 0 2px}
+.mock .row{display:flex;justify-content:space-between;align-items:center;margin-top:16px}
+.price{font-weight:800;font-size:22px}
+.add{background:var(--btn);color:var(--on-btn);border-radius:999px;padding:8px 18px;font-weight:700;font-size:14px}
+.toast{position:absolute;left:-14px;bottom:-16px;background:var(--bg);box-shadow:var(--raise);border-radius:16px;padding:10px 16px;font-weight:700;font-size:14px;opacity:0;transform:translateY(10px);animation:pop .5s .9s forwards}
+@keyframes pop{to{opacity:1;transform:none}}
+section{padding:36px 0}
+.tile{display:flex;flex-direction:column}
+.hero .tile.s7:first-child,.mock{justify-content:center}
+.faq{align-items:stretch}
+.qgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+.mini{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+body{overflow-x:clip}
+.tile:has(>.ico){display:grid;grid-template-columns:auto 1fr;column-gap:14px;align-items:center;align-content:start}
+.tile:has(>.ico)>.ico{grid-column:1;grid-row:1;margin:0}
+.tile:has(>.ico)>h3{grid-column:2;grid-row:1;margin:0}
+.tile:has(>.ico)>:not(.ico):not(h3){grid-column:1/-1}
+.tile:has(>.ico)>p{margin-top:14px}
+.marq{width:90%;max-width:1800px;margin:0 auto;overflow:hidden;border-radius:999px;box-shadow:var(--inset);padding:14px 0}
+.mtrack{display:flex;align-items:center;width:max-content;animation:mq 30s linear infinite;font-weight:700;color:var(--deep);white-space:nowrap}
+.mtrack span{margin-right:26px}.mtrack i{width:10px;height:10px;border-radius:50%;background:#F5C518;box-shadow:0 0 8px rgba(245,197,24,.9);margin-right:26px;flex:none}
+@keyframes mq{to{transform:translateX(-50%)}}
+.sep{width:90%;max-width:1800px;margin:6px auto;height:8px;border-radius:99px;box-shadow:var(--inset);position:relative}
+.sep::after{content:"";position:absolute;left:50%;top:50%;width:28px;height:28px;border-radius:50%;transform:translate(-50%,-50%);background:radial-gradient(circle,#4C9A2A 0 5px,#FFF8DC 6px);box-shadow:5px 5px 12px var(--sd),-5px -5px 12px var(--sl),0 0 14px rgba(245,197,24,.7)}
+#services,#portfolio,#process{position:relative}
+#services::before,#portfolio::before{content:"";position:absolute;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle at 35% 35%,rgba(245,197,24,.4),rgba(245,197,24,0) 70%);pointer-events:none;z-index:-1}
+#services::before{right:3%;top:-20px}
+#portfolio::before{left:2%;top:40px}
+#process::after{content:"";position:absolute;right:4%;top:24px;width:150px;height:150px;border-radius:50%;box-shadow:var(--raise);z-index:-1;pointer-events:none}
+.flow{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+.flow span{padding:7px 14px;border-radius:999px;background:rgba(255,248,220,.16);font-weight:600;font-size:14px}
+.chev{width:20px;height:20px;border-right:3px solid #F5C518;border-bottom:3px solid #F5C518;transform:rotate(45deg);margin:4px 0 14px 14px}
+.dest{display:inline-block;align-self:flex-start;background:#F5C518;color:#1F5C2E;font-weight:800;font-size:22px;padding:12px 26px;border-radius:18px}
+.mig{justify-content:center}
+.tech{padding:18px}.tech h3{font-size:17px;margin-bottom:4px}.tech p{font-size:14px}
+.cta-band{text-align:center;align-items:center;padding:36px 24px}
+.cta-band p{max-width:34em;margin:6px 0 20px;color:#FFF8DC}
+.cta-band .cta{justify-content:center}
+.deep .btn{background:#F5C518;color:#1F5C2E!important}
+.deep .btn.soft{background:transparent;color:#FFF8DC!important;border:2px solid rgba(255,248,220,.6);box-shadow:none}
+@media (max-width:1000px){.mini{grid-template-columns:1fr 1fr}}
+.qgrid .full{grid-column:1/-1}
+.ul{margin:16px 0 0;padding:0;list-style:none;display:grid;gap:8px;font-size:15px;color:var(--muted)}
+.ul li{display:flex;gap:10px;align-items:flex-start}
+.ul li::before{content:"";flex:none;width:8px;height:8px;border-radius:50%;background:var(--sage);margin-top:9px}
+.deep .ul{color:#FFF8DC}.deep .ul li::before{background:#F5C518}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto;padding-top:16px}
+.tags span{font-size:13px;font-weight:600;padding:5px 13px;border-radius:999px;box-shadow:var(--inset);color:var(--muted)}
+.gold .tags span{color:#1F5C2E}
+.fallback{display:flex;flex-direction:column;justify-content:center;flex:1}
+.fallback .shot{flex:1;min-height:200px;display:grid;place-items:center}
+.play{width:76px;height:76px;border-radius:50%;background:#FFF8DC;box-shadow:0 10px 26px rgba(31,92,46,.3);position:relative;z-index:1}
+.play::after{content:"";position:absolute;left:31px;top:24px;border-left:22px solid #1F5C2E;border-top:14px solid transparent;border-bottom:14px solid transparent}
+.mock.hasvid{padding:0;overflow:hidden;min-height:360px}
+.mock.hasvid .fallback,.mock.hasvid .toast{display:none}
+.vidbox{position:absolute;inset:0}
+.vidbox[hidden]{display:none}
+.vidbox video{width:100%;height:100%;object-fit:cover;display:block;background:var(--deep)}
+.vcap{position:absolute;left:0;right:0;bottom:0;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:48px 20px 18px;background:linear-gradient(transparent,rgba(20,60,30,.85));color:#FFF8DC}
+.vcap b{font-size:16px}
+.vcap div{display:flex;gap:8px;flex-wrap:wrap}
+.vcap a,.vcap button{background:#FFF8DC;color:#1F5C2E;border:0;font:inherit;font-weight:700;font-size:14px;padding:8px 16px;border-radius:999px;text-decoration:none;cursor:pointer}
+.site{height:130px;border-radius:16px;box-shadow:var(--inset);margin-bottom:14px;overflow:hidden;display:flex;flex-direction:column;flex:none}
+.site b{height:22px;flex:none;background:rgba(31,92,46,.16)}
+.site span{flex:1;display:grid;place-items:center;font-weight:800;font-size:22px;letter-spacing:-.02em;background:var(--c);color:var(--t)}
+h2{font-size:clamp(24px,3vw,34px);line-height:1.12;letter-spacing:-.03em;margin:0 0 8px;font-weight:800}
+.sub{color:var(--muted);max-width:36em;margin:0 0 22px}
+.step{width:42px;height:42px;border-radius:50%;box-shadow:var(--inset);display:grid;place-items:center;font-weight:800;margin-bottom:16px;color:var(--text)}
+.faq{align-items:start}
+details summary{cursor:pointer;font-weight:700;font-size:18px;list-style:none;display:flex;justify-content:space-between;gap:16px}
+details summary::-webkit-details-marker{display:none}
+details summary::after{content:"+";font-size:26px;line-height:1;transition:transform .2s}
+details[open] summary::after{transform:rotate(45deg)}
+details p{margin-top:12px}
+form{display:grid;gap:14px}
+label{font-weight:600;font-size:15px;display:grid;gap:7px}
+input,textarea,select{font:inherit;color:var(--text);background:var(--bg);border:0;border-radius:16px;padding:11px 14px;width:100%;box-shadow:var(--inset)}
+textarea{min-height:96px;resize:vertical}
+input::placeholder,textarea::placeholder{color:var(--muted);opacity:.75}
+.fine{font-size:14px!important}
+.deep a{color:#F5C518}
+footer{padding:30px 0 36px}
+.foot{padding:32px}
+.fgrid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1.3fr;gap:36px}
+.foot h4{margin:0 0 14px;font-size:16px}
+.foot ul{list-style:none;margin:0;padding:0;display:grid;gap:9px;font-size:15px;color:#FFF8DC}
+.foot a{color:#FFF8DC;text-decoration:none;overflow-wrap:anywhere}
+.foot a:hover{color:#FFF8DC;text-decoration:underline}
+.foot p{max-width:26em;margin:14px 0 22px;color:#FFF8DC}
+.flogo{color:#FFF8DC!important}.flogo i{background:var(--deep)}.flogo i::after{background:#F5C518}
+.foot .fbtn{background:#F5C518;color:#1F5C2E!important}
+.fbar{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-top:26px;padding-top:16px;border-top:1px solid rgba(255,255,255,.25);font-size:14px;color:#efe7bd}
+.ico::after{box-shadow:0 0 10px rgba(76,154,42,.55)}
+.deep .ico::after{box-shadow:0 0 10px rgba(245,197,24,.9)}
+.hero{position:relative}
+.hero::before{content:"";position:absolute;right:6%;top:-50px;width:360px;height:360px;border-radius:50%;background:radial-gradient(circle,rgba(245,197,24,.38),rgba(245,197,24,0) 70%);pointer-events:none;z-index:-1}
+.tile{transition:transform .25s ease,box-shadow .25s ease}
+@media (hover:hover){.tile:hover{transform:translateY(-3px)}}
+@media (max-width:860px){
+.links a:not(.btn){display:none}
+.wrap{width:95%}
+.fgrid{grid-template-columns:1fr 1fr;gap:28px}
+.fgrid>:first-child{grid-column:1/-1}
+.qgrid{grid-template-columns:1fr}
+.mock.hasvid{min-height:240px}
+.bento{grid-template-columns:1fr;gap:12px}
+.bento>*{grid-column:auto!important;grid-row:auto!important}
+.hero .s7,.tile{padding:18px;border-radius:20px}
+.hero{padding:8px 0 24px}
+h1{font-size:28px}
+.tile .lead{font-size:16px;margin-bottom:14px}
+.tile h3{font-size:18px}
+.nav{padding:5px 6px 5px 14px}
+.logo{font-size:19px}
+.btn{padding:10px 18px;font-size:15px}
+.cta .btn{flex:1;text-align:center}
+.site{height:110px}
+.ul{margin-top:12px;gap:6px}
+.foot{padding:20px}
+.mini{gap:12px}
+.hero .mock{order:3}
+body{font-size:14.5px}
+h1{font-size:24px;letter-spacing:-.025em}
+h2{font-size:21px}
+.sub{font-size:14px;margin-bottom:16px}
+.tile p,.tile .lead{font-size:14px}
+.tile .lead{font-size:14.5px}
+.tile h3,.tech h3{font-size:15.5px}
+.tech p{font-size:12.5px}
+.ul{font-size:13.5px}
+details summary{font-size:15px}
+.btn{font-size:14px}
+.logo{font-size:18px}
+label{font-size:13.5px}
+.fine{font-size:12.5px!important}
+.tags span{font-size:12px;padding:4px 10px}
+.mtrack{font-size:13px}
+.dest{font-size:19px;padding:10px 20px}
+.flow span{font-size:12.5px;padding:5px 11px}
+.foot ul{font-size:13.5px}
+.foot h4{font-size:14px}
+.fbar{font-size:12px}
+#services::before,#portfolio::before,#process::after,.hero::before{display:none}
+.marq,.sep{width:95%}
+.marq{padding:10px 0}
+.fallback .shot{min-height:150px}
+section{padding:26px 0}
+.toast{left:10px}
+}
+.center{text-align:center}.center .sub{margin-left:auto;margin-right:auto}
+.logos{display:grid;gap:4px}
+.lrow{overflow:hidden;padding:16px 0}
+.ltrack{display:flex;width:max-content}
+.ltrack.rowa{animation:lr 40s linear infinite}
+.ltrack.rowb{animation:rl 40s linear infinite}
+@keyframes lr{from{transform:translateX(-50%)}to{transform:translateX(0)}}
+@keyframes rl{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.lrow:hover .ltrack{animation-play-state:paused}
+.lchip{flex:none;min-width:180px;height:58px;padding:0 28px;margin-right:18px;border-radius:16px;background:var(--bg);box-shadow:var(--raise);display:grid;place-items:center;font-weight:800;font-size:18px;color:var(--deep);white-space:nowrap}
+.lchip img{max-height:34px;width:auto;display:block}
+@media (max-width:860px){.lchip{min-width:130px;height:46px;font-size:15px;padding:0 18px;margin-right:12px}.lrow{padding:12px 0}}
+@media (prefers-reduced-motion:reduce){.ltrack{animation:none}.lrow{overflow-x:auto}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.mtrack{animation:none}.toast{animation:none;opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<header>
+<div class="wrap">
+<div class="nav">
+<a class="logo" href="#top">
+    <img src="images/goodweb logo png.png" alt="Goodweb Logo">
+</a>
+<nav class="links" aria-label="Main">
+<a href="#services">Services</a><a href="#portfolio">Portfolio</a><a href="#process">How it works</a><a href="#faq">FAQ</a>
+<a class="btn" href="#contact">Get a free quote</a>
+</nav>
+</div>
+</div>
+</header>
+
+<main id="top">
+<div class="wrap hero">
+<div class="bento">
+<div class="tile s7">
+<h1>Online stores that load fast and are easy to buy from.</h1>
+<p class="lead">Goodweb is a Kolkata web studio that designs and builds Shopify and eCommerce stores for growing brands. Every store loads quickly, looks right on mobile and is simple for you to manage.</p>
+<div class="cta"><a class="btn" href="#contact">Get a free quote</a><a class="btn soft" href="#services">See what we build</a></div>
+<div class="tags"><span>Shopify</span><span>WordPress</span><span>Custom code</span><span>Based in Kolkata</span></div>
+</div>
+<div class="tile s5 r2 mock" id="mock"><div class="vidbox" id="vidbox" hidden></div><div class="fallback" aria-hidden="true">
+<div class="shot"><i class="play"></i></div>
+<h3>Our work in motion</h3>
+<p>Project videos play here.</p>
+</div></div>
+<div class="tile s7 gold">
+<h3>Get a free quote in one minute</h3>
+<p>Tell us what you need and we’ll reply on WhatsApp with questions and a price.</p>
+<form id="quick" class="qgrid">
+<label>Your name<input name="name" required autocomplete="name" placeholder="Full name"></label>
+<label>WhatsApp number<input name="phone" type="tel" required autocomplete="tel" inputmode="tel" placeholder="+918910373763"></label>
+<label class="full">What do you need?
+<select name="need"><option>New online store</option><option>Redesign of my store</option><option>Speed and mobile fixes</option><option>Monthly care</option><option>Business website</option><option>Something else</option></select>
+</label>
+<button class="btn full" type="submit">Get my free quote</button>
+</form>
+</div>
+</div>
+</div>
+
+<section id="trusted">
+<div class="wrap center">
+<h2>Trusted by brands</h2>
+<p class="sub">Websites and stores we have built for businesses and organisations.</p>
+<div class="logos" aria-label="Brands we have worked with">
+<div class="lrow"><div class="ltrack rowa" id="lrow1"></div></div>
+<div class="lrow"><div class="ltrack rowb" id="lrow2"></div></div>
+</div>
+</div>
+</section>
+
+<div class="marq" aria-hidden="true"><div class="mtrack"><span>Shopify stores</span><i></i><span>Custom themes</span><i></i><span>Store redesign</span><i></i><span>Speed and mobile</span><i></i><span>Apps and integrations</span><i></i><span>WordPress websites</span><i></i><span>Monthly care</span><i></i></div></div>
+
+<section id="services">
+<div class="wrap">
+<h2>What we build</h2>
+<p class="sub">From a first store to a redesign of an existing one. Pick one service or combine them.</p>
+<div class="bento">
+<div class="tile s6 r2 deep"><div class="ico"></div><h3>Shopify store setup</h3><p>Theme setup, products, collections, payments, shipping and the pages every store needs, ready to take orders. The fastest way to go from idea to first sale.</p><ul class="ul"><li>Theme setup and branding</li><li>Products and collections added</li><li>Payments, shipping and taxes</li><li>Policy pages, contact page and basic SEO</li><li>A walkthrough so you can manage it yourself</li></ul></div>
+<div class="tile s3"><div class="ico"></div><h3>Custom themes</h3><p>Sections written in Liquid to match your brand, not a template with your logo on it.</p><ul class="ul"><li>Custom sections and snippets</li><li>Mega menu, cart drawer, sticky add-to-cart</li></ul></div>
+<div class="tile s3"><div class="ico"></div><h3>Store redesign</h3><p>Clearer product pages and a simpler checkout flow for stores with visitors but few orders.</p><ul class="ul"><li>Product page layouts</li><li>Navigation and search</li></ul></div>
+<div class="tile s3"><div class="ico"></div><h3>Speed and mobile</h3><p>Lighter pages and layouts tested on real phones, where most shoppers are.</p><ul class="ul"><li>Image and script clean-up</li><li>Mobile-first layouts</li></ul></div>
+<div class="tile s3"><div class="ico"></div><h3>Apps and integrations</h3><p>Payment gateways, shipping partners and email tools working together.</p><ul class="ul"><li>Payment gateway setup</li><li>Reviews, wishlist and WhatsApp chat</li></ul></div>
+<div class="tile s6 gold"><h3>Monthly care</h3><p>Updates, new sections, small fixes and offer-season changes handled for a fixed monthly fee, so your store keeps improving after launch.</p><div class="tags"><span>Bug fixes</span><span>New sections</span><span>Offer banners</span><span>Product uploads</span></div></div>
+<div class="tile s6"><h3>Business websites</h3><p>WordPress and custom PHP websites for organisations, events and local businesses that need a clear, professional presence online.</p><div class="tags"><span>WordPress</span><span>Elementor</span><span>PHP</span><span>Tailwind CSS</span></div></div>
+</div>
+</div>
+</section>
+
+<section id="migration">
+<div class="wrap">
+<h2>Move to Shopify from any platform</h2>
+<p class="sub">Already selling on WooCommerce, WordPress, Wix or another platform? We move your store across without losing what you have built.</p>
+<div class="bento">
+<div class="tile s6"><div class="ico"></div><h3>What we move</h3><p>Everything your customers and search rankings depend on.</p><ul class="ul"><li>Products, variants and images</li><li>Collections and categories</li><li>Customers and past orders</li><li>Page URLs with redirects to protect your SEO</li><li>Key pages and blog posts</li></ul></div>
+<div class="tile s6 deep mig"><div class="flow"><span>WooCommerce</span><span>WordPress</span><span>Wix</span><span>Magento</span><span>Custom site</span></div><div class="chev"></div><div class="dest">Shopify</div><p style="margin-top:16px">The new store is tested on mobile and desktop, and goes live only after you approve it.</p></div>
+</div>
+</div>
+</section>
+
+<section id="features">
+<div class="wrap">
+<h2>Built to turn visitors into buyers</h2>
+<p class="sub">The features that help shoppers find, trust and buy, built into your store from day one.</p>
+<div class="bento">
+<div class="tile s4 deep"><div class="ico"></div><h3>Sticky add-to-cart</h3><p>Keeps the buy button within reach as shoppers scroll long product pages on mobile.</p></div>
+<div class="tile s4"><div class="ico"></div><h3>Custom cart drawer</h3><p>A slide-out cart where shoppers review items and head to checkout without leaving the page.</p></div>
+<div class="tile s4"><div class="ico"></div><h3>Predictive search</h3><p>Instant suggestions as customers type, so they reach the right product faster.</p></div>
+<div class="tile s4"><div class="ico"></div><h3>Wishlist and suggestions</h3><p>Let shoppers save products, and show related items to help them discover more.</p></div>
+<div class="tile s4"><div class="ico"></div><h3>Clean product data</h3><p>Metafields keep sizes, materials and care details tidy and easy for you to edit.</p></div>
+<div class="tile s4 gold"><div class="ico"></div><h3>Fast loading</h3><p>Optimised images and lean scripts, so pages open quickly even on mobile networks.</p></div>
+</div>
+</div>
+</section>
+
+<div class="sep" aria-hidden="true"></div>
+<section id="why">
+<div class="wrap">
+<h2>Why brands choose Goodweb</h2>
+<p class="sub">A small studio that keeps things clear, fast and easy for you.</p>
+<div class="mini">
+<div class="tile"><div class="ico"></div><h3>Mobile first</h3><p>Most shoppers browse on phones, so every page is designed and tested there first.</p></div>
+<div class="tile"><div class="ico"></div><h3>Fixed scope and price</h3><p>You get a clear quote before work starts, so there are no surprises later.</p></div>
+<div class="tile"><div class="ico"></div><h3>Easy to manage</h3><p>Add products, change banners and edit pages yourself, with a walkthrough at launch.</p></div>
+<div class="tile"><div class="ico"></div><h3>Support after launch</h3><p>Fixes, updates and new sections when you need them, one-off or on a monthly plan.</p></div>
+</div>
+</div>
+</section>
+
+<section id="portfolio">
+<div class="wrap">
+<h2>Recent work</h2>
+<p class="sub">A selection of websites and stores we have built, from charity sites to Shopify shops.</p>
+<div class="bento">
+<div class="tile s6"><div class="site" style="--c:#FFF8DC;--t:#1F5C2E"><b></b><span>BSSSK</span></div><h3>Charity website</h3><p>A website for Bango Sammilani Samajik Sanstha, built so the organisation’s content is easy to edit.</p><div class="tags"><span>Astra</span><span>Elementor</span></div></div>
+<div class="tile s6"><div class="site" style="--c:#0f1d3a;--t:#7CFF6B"><b></b><span>Green Gain</span></div><h3>Finance website</h3><p>A finance brand site with a deep navy and neon green look, made to feel modern and trustworthy.</p><div class="tags"><span>Brand design</span><span>Responsive UI</span></div></div>
+<div class="tile s4"><div class="site" style="--c:#F5C518;--t:#1F5C2E"><b></b><span>YellowClicks</span></div><h3>Event management site</h3><p>A site for an event management business, built from scratch.</p><div class="tags"><span>PHP</span><span>Tailwind CSS</span></div></div>
+<div class="tile s4"><div class="site" style="--c:#4C9A2A;--t:#FFF8DC"><b></b><span>Pet grooming</span></div><h3>Shopify store</h3><p>An online store for a pet grooming business with custom sections.</p><div class="tags"><span>Shopify</span><span>Liquid</span></div></div>
+<div class="tile s4"><div class="site" style="--c:#B9764F;--t:#ffffff"><b></b><span>Mitti ke bartan</span></div><h3>eCommerce concept store</h3><p>A concept store for traditional clay cookware, designed around product storytelling.</p><div class="tags"><span>Shopify</span><span>Concept</span></div></div>
+</div>
+</div>
+</section>
+
+<div class="sep" aria-hidden="true"></div>
+<section id="process">
+<div class="wrap">
+<h2>How it works</h2>
+<p class="sub">Three steps, with a clear scope and price agreed before we start.</p>
+<div class="bento">
+<div class="tile s4"><div class="step">1</div><h3>Tell us about your store</h3><p>Share your products, your brand and what you want to fix or launch. We reply with a scope and a quote.</p></div>
+<div class="tile s4"><div class="step">2</div><h3>We design and build</h3><p>You see the work in progress, give feedback, and we revise within the agreed rounds.</p></div>
+<div class="tile s4"><div class="step">3</div><h3>Launch and support</h3><p>We take the store live, show you how to manage it, and stay available for changes.</p></div>
+</div>
+</div>
+</section>
+
+<section id="tech">
+<div class="wrap">
+<h2>Built on the right technology</h2>
+<p class="sub">Proven tools, chosen for speed, flexibility and easy management.</p>
+<div class="mini">
+<div class="tile tech"><h3>Shopify</h3><p>Stores and checkout</p></div>
+<div class="tile tech"><h3>Liquid</h3><p>Custom themes and sections</p></div>
+<div class="tile tech"><h3>JavaScript</h3><p>AJAX cart, search and interactions</p></div>
+<div class="tile tech"><h3>WordPress</h3><p>Business websites</p></div>
+<div class="tile tech"><h3>Elementor</h3><p>Visual page building</p></div>
+<div class="tile tech"><h3>Astra</h3><p>Lightweight WordPress theme</p></div>
+<div class="tile tech"><h3>PHP</h3><p>Custom web applications</p></div>
+<div class="tile tech"><h3>Tailwind CSS</h3><p>Clean, responsive styling</p></div>
+</div>
+</div>
+</section>
+
+<section id="faq">
+<div class="wrap">
+<h2>Common questions</h2>
+<p class="sub">Short answers. Ask us anything else when you get in touch.</p>
+<div class="bento faq">
+<div class="tile s6"><details><summary>Do you only work with Shopify?</summary><p>Shopify is our main platform for online stores. We also build WordPress and custom websites when a project needs it.</p></details></div>
+<div class="tile s6"><details><summary>How long does a store take to build?</summary><p>It depends on the number of products and custom sections. We give you a timeline with the quote, before any work starts.</p></details></div>
+<div class="tile s6"><details><summary>Can I manage the store myself?</summary><p>Yes. We build it so you can add products, change banners and edit pages without a developer, and we walk you through it at launch.</p></details></div>
+<div class="tile s6"><details><summary>Do you work outside Kolkata?</summary><p>Yes. We meet local clients in person and work with brands across India and abroad over video calls and chat.</p></details></div>
+</div>
+</div>
+</section>
+
+<section id="cta">
+<div class="wrap">
+<div class="tile deep cta-band">
+<h2>Ready to build your Shopify store?</h2>
+<p>Tell us about your products and goals. We will reply with a clear plan and a fixed price.</p>
+<div class="cta"><a class="btn" id="ctaWa" href="#" target="_blank" rel="noopener">Chat on WhatsApp</a><a class="btn soft" href="#contact">Send a message</a></div>
+</div>
+</div>
+</section>
+
+<div class="sep" aria-hidden="true"></div>
+<section id="contact">
+<div class="wrap">
+<div class="bento">
+<div class="tile s5 deep">
+<h2>Tell us what you’re planning</h2>
+<p>Send a short message and we’ll reply with questions and a quote. No obligation.</p>
+<p class="fine" style="margin-top:18px">Prefer to talk? Message us on WhatsApp or email <a id="mailLink" href="#">our team</a>.</p>
+</div>
+<div class="tile s7">
+<form id="lead">
+<label>Your name<input name="name" required autocomplete="name"></label>
+<label>Business or brand name<input name="biz" autocomplete="organization"></label>
+<label>What do you need?
+<select name="need"><option>New online store</option><option>Redesign of my store</option><option>Speed and mobile fixes</option><option>Monthly care</option><option>Something else</option></select>
+</label>
+<label>Details<textarea name="msg" placeholder="Products you sell, links to your current site, deadline"></textarea></label>
+<button class="btn" type="submit">Send on WhatsApp</button>
+<p class="fine">This opens WhatsApp with your message filled in.</p>
+</form>
+</div>
+</div>
+</div>
+</section>
+</main>
+
+<footer>
+<div class="wrap">
+<div class="tile deep foot">
+<div class="fgrid">
+<div><a class="logo flogo" href="#top"><i></i>Goodweb</a><p>Shopify and eCommerce websites that load fast, look right on mobile and are easy to manage.</p><a class="btn fbtn" href="#contact">Get a free quote</a></div>
+<div><h4>Explore</h4><ul><li><a href="#services">Services</a></li><li><a href="#portfolio">Portfolio</a></li><li><a href="#process">How it works</a></li><li><a href="#faq">FAQ</a></li><li><a href="#contact">Contact</a></li></ul></div>
+<div><h4>Services</h4><ul><li>Shopify store setup</li><li>Custom themes</li><li>Store redesign</li><li>Speed and mobile</li><li>Apps and integrations</li><li>Monthly care</li></ul></div>
+<div><h4>Get in touch</h4><ul><li><a id="footWa" href="#" target="_blank" rel="noopener">Chat on WhatsApp</a></li><li><a id="footMail" href="#">Email us</a></li><li><a href="https://www.instagram.com/goodweb_social" target="_blank" rel="noopener">Instagram</a></li><li>Kolkata, India</li></ul></div>
+</div>
+<div class="fbar"><span>© 2026 Goodweb. All rights reserved.</span><a href="#top">Back to top</a></div>
+</div>
+</div>
+</footer>
+
+<script>
+var mt = document.querySelector(".mtrack"); if (mt) mt.innerHTML += mt.innerHTML;
+
+// Brands row: add { name: "Brand", logo: "images/brand-logo.png" } to show a logo image instead of the name.
+var BRANDS = [
+  { logo: "images/Screenshot 2026-11-20 113309.png" },
+  { logo: "images/Kolkata_Nama_Taxi_final_logo_TM.avif" },
+  { name: "YellowClicks" },
+  { name: "Pet grooming store" },
+  { name: "Mitti ke bartan" }
+];
+(function () {
+  function chip(b) {
+    var d = document.createElement("div"); d.className = "lchip";
+    if (b.logo) { var i = document.createElement("img"); i.src = b.logo; i.alt = b.name || ""; d.appendChild(i); }
+    else { d.textContent = b.name; }
+    return d;
+  }
+  function fill(id, list) {
+    var t = document.getElementById(id); if (!t || !list.length) return;
+    var reps = Math.max(2, Math.ceil(10 / list.length)), half = [];
+    for (var r = 0; r < reps; r++) half = half.concat(list);
+    for (var k = 0; k < 2; k++) half.forEach(function (b) { t.appendChild(chip(b)); });
+  }
+  fill("lrow1", BRANDS.slice());
+  fill("lrow2", BRANDS.slice().reverse());
+})();
+// Replace these two values with your real details
+var WHATSAPP = "918910373763"; // country code + number, no + or spaces
+var EMAIL = "sudhanshugupta4002@gmail.com";
+document.getElementById("mailLink").href = "mailto:" + EMAIL;
+document.getElementById("footMail").href = "mailto:" + EMAIL;
+document.getElementById("footMail").textContent = EMAIL;
+document.getElementById("footWa").href = "https://wa.me/" + WHATSAPP;
+document.getElementById("ctaWa").href = "https://wa.me/" + WHATSAPP;
+document.getElementById("quick").addEventListener("submit", function (e) {
+  e.preventDefault();
+  var f = e.target;
+  var text = "Hi Goodweb, I’m " + f.name.value + ". My WhatsApp number is " + f.phone.value + ".\nI need: " + f.need.value;
+  window.open("https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(text), "_blank", "noopener");
+});
+
+// Hero video: add one or more videos. One = plays on loop. Several = shuffled, each with its link.
+var VIDEOS = [
+  // { src: "https://your-host.com/video1.mp4", title: "Project name", link: "https://project-link.com" },
+  // { src: "https://your-host.com/video2.mp4", title: "Another project", link: "https://another-link.com" }
+];
+(function () {
+  if (!VIDEOS.length) return;
+  var box = document.getElementById("vidbox"), tile = document.getElementById("mock");
+  var list = VIDEOS.slice(), idx = 0, fails = 0;
+  if (list.length > 1) {
+    for (var i = list.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = list[i]; list[i] = list[j]; list[j] = t; }
+  }
+  var v = document.createElement("video");
+  v.muted = true; v.playsInline = true; v.setAttribute("playsinline", ""); v.preload = "metadata"; v.loop = list.length === 1;
+  var still = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (still) v.controls = true;
+  var cap = document.createElement("div"); cap.className = "vcap";
+  var title = document.createElement("b"), actions = document.createElement("div"), link = document.createElement("a");
+  link.target = "_blank"; link.rel = "noopener"; link.textContent = "View project";
+  actions.appendChild(link);
+  if (list.length > 1) {
+    var next = document.createElement("button"); next.type = "button"; next.textContent = "Next video";
+    next.onclick = function () { play(idx + 1); }; actions.appendChild(next);
+  }
+  cap.appendChild(title); cap.appendChild(actions); box.appendChild(v); box.appendChild(cap);
+  function play(n) {
+    idx = n % list.length; var it = list[idx];
+    v.src = it.src; title.textContent = it.title || "";
+    if (it.link) { link.href = it.link; link.style.display = ""; } else { link.style.display = "none"; }
+    if (!still) { var p = v.play(); if (p && p.catch) p.catch(function () {}); }
+  }
+  v.addEventListener("ended", function () { if (list.length > 1) play(idx + 1); });
+  v.addEventListener("error", function () {
+    fails++;
+    if (fails >= list.length) { box.hidden = true; tile.classList.remove("hasvid"); } else if (list.length > 1) { play(idx + 1); }
+  });
+  box.hidden = false; tile.classList.add("hasvid"); play(0);
+})();
+document.getElementById("lead").addEventListener("submit", function (e) {
+  e.preventDefault();
+  var f = e.target;
+  var text = "Hi Goodweb, I’m " + f.name.value + (f.biz.value ? " from " + f.biz.value : "") +
+    ".\nI need: " + f.need.value + (f.msg.value ? "\nDetails: " + f.msg.value : "");
+  window.open("https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(text), "_blank", "noopener");
+});
+</script>
+</body>
+</html>
